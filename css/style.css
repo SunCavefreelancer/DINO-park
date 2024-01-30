@@ -212,7 +212,7 @@ body.menu-open {
 }
 @media (max-width: 47.9375em) {
   .hero__cards {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     row-gap: 0.3125rem;
   }
 }

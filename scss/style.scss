@@ -102,7 +102,7 @@ body {
 			row-gap: toRem(30);
 		}
 		@media(max-width: toEm(767)) {
-			grid-template-columns: repeat(4, 1fr);
+			grid-template-columns: repeat(2, 1fr);
 			row-gap: toRem(5);
 		}
 	}
