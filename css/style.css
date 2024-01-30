@@ -204,6 +204,18 @@ body.menu-open {
     row-gap: 1.875rem;
   }
 }
+@media (max-width: 50.3125em) {
+  .hero__cards {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.875rem;
+  }
+}
+@media (max-width: 47.9375em) {
+  .hero__cards {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 0.3125rem;
+  }
+}
 .hero__item:hover .hero__text {
   visibility: visible;
   opacity: 1;
