@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:regular&display=swap");
+
+
+/* ======Підключення вручну======= */
+/* Шрифт № 1 */
+@font-face {
+	font-family: "causten-medium";
+	src:
+		url("../fonts/causten-medium.woff2") format("woff2"),
+		url("../fonts/causten-medium.woff") format("woff");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+

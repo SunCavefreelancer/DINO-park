@@ -1,0 +1,206 @@
+@use "sass:math";
+
+// Мінімальна ширина сторінки
+$minWidth: 320;
+// Ширина полотна (макету)
+$maxWidth: 1440;
+// Ширина обмежуючого контейнера (0 = немає обмеження)
+$maxWidthContainer: 1240;
+// Загальний відступ у контейнера
+// (30 = по 15px ліворуч і праворуч, 0 = немає відступу)
+$containerPadding: 30;
+// Ширина спрацьовування першого брейкпоінту
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Кольори
+$mainColor: #807d7e;
+$darkColor: #3c4242;
+$purplColor: #8a33fd;
+$liteColor: #f6f6f6;
+$blakcColor: #161616;
+
+// Функції
+@import "_functions.scss";
+// Шрифти
+@import "_fonts.scss";
+// Обнулення
+@import "_reset.scss";
+
+body {
+	font-family: "causten-medium";
+	color: $mainColor;
+	&.menu-open {
+		overflow: hidden;
+		touch-action: none;
+		overscroll-behavior: none;
+	}
+}
+.wrapper {
+	overflow: clip;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	@media (max-width: toEm(540)) {
+		padding-bottom: toRem(75);
+	}
+}
+.wrapper > main {
+	flex-grow: 1;
+}
+[class*="__container"] {
+	max-width: toRem(1270);
+	margin: 0 auto;
+	padding-left: toRem(15);
+	padding-right: toRem(15);
+}
+
+
+// @include adaptiveValue("margin-bottom", 40, 10); адаптив
+
+//---------------------------hero------------------------------------------------------------
+.hero {
+	background: url(../img/19.jpg) 0 0 / cover no-repeat;
+	height: 100svh;
+	padding: toRem(130) toRem(20);
+	@media(max-width: toEm(920)) {
+		padding: toRem(100) toRem(20) toRem(50);
+	}
+	@media(max-width: toEm(700)) {
+		padding: toRem(150) toRem(20) toRem(50);
+	}
+	@media(max-width: toEm(570)) {
+		padding: toRem(150) toRem(0);
+	}
+
+//__title 
+	&__title {
+		@include adaptiveValue("font-size", 105, 35);
+		color: $blakcColor;
+		font-weight: 800;
+		text-align: center;		
+		position: absolute;
+		top: 55%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		@media(max-width: toEm(767)) {
+			top: 40%;
+		}
+		@media(max-width: toEm(320)) {
+			top: 37%;
+		}
+	}
+// .hero__cards
+	&__cards {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		@media(max-width: toEm(940)) {
+			grid-template-columns: repeat(4, 1fr);
+			row-gap: toRem(30);
+		}
+	}
+
+
+	&__item:hover &__text {
+		visibility: visible;
+		opacity: 1;
+		transition: 1.2s;
+	}
+
+// .hero__item
+	&__item {
+		position: relative;
+		aspect-ratio: 455 / 280;
+
+		display: grid;				//text двигаем
+	}
+
+// .hero__img
+	&__img img {
+		position: absolute;
+		top: toRem(0);
+		left: toRem(0);
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		transition: 0.7s;
+		opacity: 0.5;
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+// .hero__item-p
+	&__text {
+		& > *:last-child {
+			margin-bottom: toEm(0);
+		}
+		visibility: hidden;
+		opacity: 0;
+
+		background-color: $liteColor;
+		/* ------ */
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 16px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);
+		border: 1px solid rgba(255, 255, 255, 0.3);
+
+		position: relative;
+		z-index: 2;
+		justify-self: start;		//text двигаем
+		align-self: center;			//text двигаем
+		text-align: center;			//text двигаем
+		padding: toRem(20);
+		color: $liteColor;
+		& p {
+		line-height: 120%;
+		@include adaptiveValue("font-size", 18, 14);
+		@include adaptiveValue("margin-bottom", 10, 5);			
+		}
+	}
+
+
+	.hero {
+
+// .hero__block
+		&__block {
+			position: relative;
+			height: 100%;
+		}
+
+// .hero__left
+		&__left {
+			background: url(../img/m_3.png)  bottom left / 100% no-repeat;
+			z-index: 1;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: toRem(0);
+			left: toRem(0);
+		}
+
+// .hero__right
+		&__right {
+			background: url(../img/m_2.png)  bottom right / 45% no-repeat;
+			z-index: 1;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: toRem(0);
+			left: toRem(0);
+		}
+
+// .hero__center
+		&__center {
+			background: url(../img/fog_1.png)  0 0 / 100% no-repeat;
+			z-index: 2;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: toRem(0);
+			left: toRem(0);
+		}
+	}
+
+}
